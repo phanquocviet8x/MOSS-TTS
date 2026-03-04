@@ -186,6 +186,12 @@ class PipelineConfig:
         elif self.audio_backend == "onnx":
             checks.append(("audio_encoder_onnx", self.audio_encoder_onnx))
             checks.append(("audio_decoder_onnx", self.audio_decoder_onnx))
+        elif self.audio_backend == "torch":
+            if not self.audio_model_name_or_path:
+                raise ValueError(
+                    "audio_backend='torch' requires 'audio_model_name_or_path' "
+                    "(e.g. 'OpenMOSS-Team/MOSS-Audio-Tokenizer')"
+                )
 
         for name, value in checks:
             if not value:
@@ -272,11 +278,14 @@ class LlamaCppPipeline:
                 decoder_path=config.audio_decoder_trt,
             )
         if config.audio_backend == "torch":
+            import torch
             from transformers import AutoModel
             model = AutoModel.from_pretrained(
                 config.audio_model_name_or_path, trust_remote_code=True,
             )
-            return _TorchAudioTokenizerWrapper(model)
+            device = "cuda" if config.use_gpu_audio and torch.cuda.is_available() else "cpu"
+            model = model.to(device)
+            return _TorchAudioTokenizerWrapper(model, device=device)
         raise ValueError(f"Unknown audio_backend: {config.audio_backend!r}")
 
     # ----- generation -----
@@ -544,8 +553,9 @@ class LlamaCppPipeline:
 class _TorchAudioTokenizerWrapper:
     """Wrap the PyTorch ``MossAudioTokenizerModel`` to match the NumPy API."""
 
-    def __init__(self, model):
+    def __init__(self, model, device: str = "cpu"):
         self._model = model
+        self._device = device
 
     def encode(self, waveform: np.ndarray) -> np.ndarray:
         import torch
@@ -553,7 +563,7 @@ class _TorchAudioTokenizerWrapper:
             waveform = waveform[np.newaxis, np.newaxis, :]
         elif waveform.ndim == 2:
             waveform = waveform[np.newaxis, :]
-        wav_t = torch.from_numpy(waveform).to(self._model.device)
+        wav_t = torch.from_numpy(waveform).to(self._device)
         codes = self._model.encode(wav_t)
         if isinstance(codes, tuple):
             codes = codes[0]
@@ -565,7 +575,7 @@ class _TorchAudioTokenizerWrapper:
             if audio_codes.shape[1] == N_VQ and audio_codes.shape[0] != N_VQ:
                 audio_codes = audio_codes.T
             audio_codes = audio_codes[:, np.newaxis, :]
-        codes_t = torch.from_numpy(audio_codes.astype(np.int64)).to(self._model.device)
+        codes_t = torch.from_numpy(audio_codes.astype(np.int64)).to(self._device)
         wav = self._model.decode(codes_t)
         if isinstance(wav, tuple):
             wav = wav[0]

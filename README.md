@@ -146,7 +146,7 @@ Install all required dependencies:
 ```bash
 git clone https://github.com/OpenMOSS/MOSS-TTS.git
 cd MOSS-TTS
-pip install --extra-index-url https://download.pytorch.org/whl/cu128 -e .
+pip install --extra-index-url https://download.pytorch.org/whl/cu128 -e ".[torch-runtime]"
 ```
 
 #### Using `uv`
@@ -157,7 +157,7 @@ git clone https://github.com/OpenMOSS/MOSS-TTS.git
 cd MOSS-TTS
 uv venv --python 3.12 .venv
 source .venv/bin/activate
-uv pip install --torch-backend cu128 -e .
+uv pip install --torch-backend cu128 -e ".[torch-runtime]"
 ```
 
 #### (Optional) Install FlashAttention 2
@@ -167,25 +167,25 @@ For better speed and lower GPU memory usage, you can install FlashAttention 2 if
 If you use Conda/pip:
 
 ```bash
-pip install --extra-index-url https://download.pytorch.org/whl/cu128 -e ".[flash-attn]"
+pip install --extra-index-url https://download.pytorch.org/whl/cu128 -e ".[torch-runtime,flash-attn]"
 ```
 
 If your machine has limited RAM and many CPU cores, you can cap build parallelism:
 
 ```bash
-MAX_JOBS=4 pip install --extra-index-url https://download.pytorch.org/whl/cu128 -e ".[flash-attn]"
+MAX_JOBS=4 pip install --extra-index-url https://download.pytorch.org/whl/cu128 -e ".[torch-runtime,flash-attn]"
 ```
 
 If you use `uv`:
 
 ```bash
-uv pip install --torch-backend cu128 -e ".[flash-attn]"
+uv pip install --torch-backend cu128 -e ".[torch-runtime,flash-attn]"
 ```
 
 If your machine has limited RAM and many CPU cores, you can cap build parallelism:
 
 ```bash
-MAX_JOBS=4 uv pip install --torch-backend cu128 -e ".[flash-attn]"
+MAX_JOBS=4 uv pip install --torch-backend cu128 -e ".[torch-runtime,flash-attn]"
 ```
 
 Notes:

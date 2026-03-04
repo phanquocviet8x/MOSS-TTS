@@ -155,7 +155,7 @@ conda activate moss-tts
 ```bash
 git clone https://github.com/OpenMOSS/MOSS-TTS.git
 cd MOSS-TTS
-pip install --extra-index-url https://download.pytorch.org/whl/cu128 -e .
+pip install --extra-index-url https://download.pytorch.org/whl/cu128 -e ".[torch-runtime]"
 ```
 
 #### 使用 `uv`
@@ -166,7 +166,7 @@ git clone https://github.com/OpenMOSS/MOSS-TTS.git
 cd MOSS-TTS
 uv venv --python 3.12 .venv
 source .venv/bin/activate
-uv pip install --torch-backend cu128 -e .
+uv pip install --torch-backend cu128 -e ".[torch-runtime]"
 ```
 <a id="optional-install-flashattention-2"></a>
 #### （可选）安装 FlashAttention 2
@@ -176,25 +176,25 @@ uv pip install --torch-backend cu128 -e .
 如果你使用 Conda/pip：
 
 ```bash
-pip install --extra-index-url https://download.pytorch.org/whl/cu128 -e ".[flash-attn]"
+pip install --extra-index-url https://download.pytorch.org/whl/cu128 -e ".[torch-runtime,flash-attn]"
 ```
 
 如果机器内存较小、CPU 核数较多，可以限制并行编译数：
 
 ```bash
-MAX_JOBS=4 pip install --extra-index-url https://download.pytorch.org/whl/cu128 -e ".[flash-attn]"
+MAX_JOBS=4 pip install --extra-index-url https://download.pytorch.org/whl/cu128 -e ".[torch-runtime,flash-attn]"
 ```
 
 如果你使用 `uv`：
 
 ```bash
-uv pip install --torch-backend cu128 -e ".[flash-attn]"
+uv pip install --torch-backend cu128 -e ".[torch-runtime,flash-attn]"
 ```
 
-如果机器内存较小、CPU 核数较多，可以限制并行编译数：
+如果机器内存较小、CPU 核心较多，可以限制并行编译数：
 
 ```bash
-MAX_JOBS=4 uv pip install --torch-backend cu128 -e ".[flash-attn]"
+MAX_JOBS=4 uv pip install --torch-backend cu128 -e ".[torch-runtime,flash-attn]"
 ```
 
 说明：
