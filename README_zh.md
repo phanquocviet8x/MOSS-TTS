@@ -33,6 +33,7 @@ MOSS‑TTS 家族是由 [MOSI.AI](https://mosi.cn/#hero) 与 [OpenMOSS 团队](h
 
 <a id="news"></a>
 ## 新闻
+* 2026.3.4：新增 **无 PyTorch 推理** 支持 — 通过 [llama.cpp](https://github.com/ggerganov/llama.cpp) + ONNX Runtime 实现端侧轻量部署。量化 GGUF 权重发布于 [`OpenMOSS-Team/MOSS-TTS-GGUF`](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-GGUF)，ONNX 音频编解码器发布于 [`OpenMOSS-Team/MOSS-Audio-Tokenizer-ONNX`](https://huggingface.co/OpenMOSS-Team/MOSS-Audio-Tokenizer-ONNX)。详见 [llama.cpp 后端](#llamacpp-后端无-pytorch-推理)。
 * 2026.2.10：🎉🎉🎉 我们已发布 [MOSS-TTS Family](https://huggingface.co/collections/OpenMOSS-Team/moss-tts)。更多详情请查看我们的 [Blog](https://mosi.cn/#models)！我们的 Huggingface Space 在这里：[MOSS-TTS](https://huggingface.co/spaces/OpenMOSS-Team/MOSS-TTS), [MOSS-TTSD-v1.0](https://huggingface.co/spaces/OpenMOSS-Team/MOSS-TTSD-v1.0), [MOSS-VoiceGenerator](https://huggingface.co/spaces/OpenMOSS-Team/MOSS-VoiceGenerator).
 
 ## 演示
@@ -52,6 +53,7 @@ MOSS‑TTS 家族是由 [MOSI.AI](https://mosi.cn/#hero) 与 [OpenMOSS 团队](h
   - [环境准备](#environment-setup)
   - [（可选）安装 FlashAttention 2](#optional-install-flashattention-2)
   - [基础用法](#moss-tts-basic-usage)
+- [llama.cpp 后端（无 PyTorch 推理）](#llamacpp-后端无-pytorch-推理)
 - [评测](#evaluation)
   - [MOSS-TTS 评测](#eval-moss-tts)
   - [MOSS-TTSD 评测](#eval-moss-ttsd)
@@ -315,6 +317,62 @@ with torch.no_grad():
 
 各模型的完整使用方式请参考对应的 model card。
 
+
+## llama.cpp 后端（无 PyTorch 推理）
+
+MOSS-TTS 支持使用 [llama.cpp](https://github.com/ggerganov/llama.cpp) 运行 Qwen3 backbone，配合 ONNX Runtime / TensorRT 运行音频编解码器，实现 **完全无 PyTorch 依赖** 的轻量端侧推理。
+
+### 快速开始
+
+```bash
+# 1. 安装（无 PyTorch）
+pip install -e ".[llama-cpp-onnx]"
+
+# 2. 下载预量化 backbone + embedding/lm_head 权重
+huggingface-cli download OpenMOSS-Team/MOSS-TTS-GGUF --local-dir weights/MOSS-TTS-GGUF
+
+# 3. 下载 ONNX 音频编解码器
+huggingface-cli download OpenMOSS-Team/MOSS-Audio-Tokenizer-ONNX --local-dir weights/MOSS-Audio-Tokenizer-ONNX
+
+# 4. 编译 C bridge（一次性，需要 llama.cpp 源码编译）
+cd moss_tts_delay/llama_cpp && bash build_bridge.sh /path/to/llama.cpp && cd ../..
+
+# 5. 推理
+python -m moss_tts_delay.llama_cpp \
+    --config configs/llama_cpp/default.yaml \
+    --text "你好世界！" --output output.wav
+```
+
+### 安装方案
+
+| 方案 | 安装命令 | 依赖 | 适用场景 |
+|------|---------|------|---------|
+| **无 Torch (ONNX)** | `pip install -e ".[llama-cpp-onnx]"` | numpy, onnxruntime-gpu, tokenizers | 推荐入门方案 |
+| **无 Torch (TRT)** | `pip install -e ".[llama-cpp-trt]"` | numpy, tensorrt, cuda-python | 最高音频编解码器性能（需自行编译 engine） |
+| **Torch 加速** | `pip install -e ".[llama-cpp-onnx,llama-cpp-torch]"` | + torch | GPU 加速 LM heads（约 30 倍提速） |
+
+### 模型权重
+
+| 仓库 | 内容 | 下载命令 |
+|------|------|---------|
+| [`OpenMOSS-Team/MOSS-TTS-GGUF`](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-GGUF) | Q4_K_M backbone `.gguf`、`embeddings/`（`.npy`）、`lm_heads/`（`.npy`）、tokenizer | `huggingface-cli download OpenMOSS-Team/MOSS-TTS-GGUF --local-dir weights/MOSS-TTS-GGUF` |
+| [`OpenMOSS-Team/MOSS-Audio-Tokenizer-ONNX`](https://huggingface.co/OpenMOSS-Team/MOSS-Audio-Tokenizer-ONNX) | Encoder & decoder ONNX 模型 | `huggingface-cli download OpenMOSS-Team/MOSS-Audio-Tokenizer-ONNX --local-dir weights/MOSS-Audio-Tokenizer-ONNX` |
+
+> **注意：** 我们 **不提供** 预编译的 TensorRT engine，因为 TRT engine 与 GPU 架构和 TensorRT 版本强绑定。如需使用 TRT，请从 ONNX 模型自行编译 — 参考 `moss_audio_tokenizer/trt/build_engine.sh`。
+
+### 配置
+
+`configs/llama_cpp/` 中提供了三个预设配置：
+
+- `default.yaml` — ONNX 音频 Tokenizer + GGUF backbone（推荐入门）
+- `trt.yaml` — TensorRT 音频 Tokenizer + GGUF backbone（最大吞吐，需自行编译 engine）
+- `cpu-only.yaml` — 纯 CPU 运行（无需 GPU）
+
+关键配置项：
+- `heads_backend: auto | numpy | torch` — LM heads 计算后端
+- `audio_backend: onnx | trt | torch` — 音频编解码器后端
+
+完整文档请查看 [moss_tts_delay/llama_cpp/README.md](moss_tts_delay/llama_cpp/README.md)。
 
 <a id="evaluation"></a>
 ## 评测
