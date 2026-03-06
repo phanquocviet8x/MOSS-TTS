@@ -363,6 +363,8 @@ python -m moss_tts_delay.llama_cpp \
 | **无 Torch (TRT)** | `pip install -e ".[llama-cpp-trt]"` | numpy, tensorrt, cuda-python | 最高音频编解码器性能（需自行编译 engine） |
 | **Torch 加速** | `pip install -e ".[llama-cpp-onnx,llama-cpp-torch]"` | + torch | GPU 加速 LM heads（约 30 倍提速） |
 
+> **想要自行转换权重？** 请参阅 [转换指南](moss_tts_delay/llama_cpp/conversion/README_zh.md)，了解如何使用 llama.cpp 提取、转换和量化 MOSS-TTS 权重。
+
 ### 模型权重
 
 | 仓库 | 内容 | 下载命令 |

@@ -37,6 +37,8 @@ pip install -e ".[llama-cpp-onnx,llama-cpp-torch]"
 
 ## 权重准备
 
+> 如需从原始 MOSS-TTS 模型自行转换权重（而非下载预量化版本），请参阅 [转换指南](conversion/README_zh.md)。
+
 ### 第一步：下载预量化的 TTS Backbone 和权重
 
 我们在 HuggingFace 上提供了预量化的 GGUF backbone、embedding 表和 LM head 矩阵：
@@ -221,5 +223,9 @@ moss_tts_delay/llama_cpp/
 ├── sampling.py          # top-k/p 采样（NumPy）
 ├── processor.py         # Tokenizer + prompt 构建器
 ├── README.md            # 英文文档
-└── README_zh.md         # 本文件
+├── README_zh.md         # 本文件
+└── conversion/
+    ├── extract_weights.py  # 权重提取脚本
+    ├── README.md           # 转换指南（英文）
+    └── README_zh.md        # 转换指南（中文）
 ```

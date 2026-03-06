@@ -355,6 +355,8 @@ python -m moss_tts_delay.llama_cpp \
 | **Torch-free (TRT)** | `pip install -e ".[llama-cpp-trt]"` | numpy, tensorrt, cuda-python | Maximum audio tokenizer speed (build engines yourself) |
 | **Torch-accelerated** | `pip install -e ".[llama-cpp-onnx,llama-cpp-torch]"` | + torch | GPU-accelerated LM heads (~30x faster) |
 
+> **Want to convert weights yourself?** See the [conversion guide](moss_tts_delay/llama_cpp/conversion/README.md) for step-by-step instructions on extracting, converting, and quantizing MOSS-TTS weights with llama.cpp.
+
 ### Model Weights
 
 | Repository | Contents | Download |

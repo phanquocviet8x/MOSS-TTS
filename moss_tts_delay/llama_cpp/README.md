@@ -37,6 +37,8 @@ pip install -e ".[llama-cpp-trt,llama-cpp-torch]"
 
 ## Weight Preparation
 
+> To convert weights from the original MOSS-TTS model yourself (instead of downloading pre-quantized ones), see the [conversion guide](conversion/README.md).
+
 ### Step 1: Download pre-quantized TTS backbone & weights
 
 We provide pre-quantized GGUF backbone, embedding tables, and LM head matrices on HuggingFace:
@@ -217,5 +219,9 @@ moss_tts_delay/llama_cpp/
 ├── sampling.py          # top-k/p sampling (NumPy)
 ├── processor.py         # Tokenizer + prompt builder
 ├── README.md            # This file
-└── README_zh.md         # Chinese documentation
+├── README_zh.md         # Chinese documentation
+└── conversion/
+    ├── extract_weights.py  # Weight extraction script
+    ├── README.md           # Conversion guide (English)
+    └── README_zh.md        # Conversion guide (Chinese)
 ```
