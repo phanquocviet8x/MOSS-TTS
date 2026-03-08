@@ -14,7 +14,7 @@
 # ── Model paths ──────────────────────────────────────────────────────────────
 
 # Pre-quantized GGUF backbone (Q4_K_M)
-backbone_gguf: weights/MOSS-TTS-GGUF/MOSS_TTS_backbone_q4km.gguf
+backbone_gguf: weights/MOSS-TTS-GGUF/MOSS_TTS_Q4_K_M.gguf
 
 # Pre-extracted .npy embedding tables and LM head weights
 embedding_dir: weights/MOSS-TTS-GGUF/embeddings

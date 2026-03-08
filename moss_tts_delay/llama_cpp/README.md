@@ -49,7 +49,7 @@ huggingface-cli download OpenMOSS-Team/MOSS-TTS-GGUF --local-dir weights/MOSS-TT
 ```
 
 This gives you:
-- `weights/MOSS-TTS-GGUF/MOSS_TTS_backbone_q4km.gguf` — Q4_K_M quantized backbone
+- `weights/MOSS-TTS-GGUF/MOSS_TTS_Q4_K_M.gguf` — Q4_K_M quantized backbone
 - `weights/MOSS-TTS-GGUF/embeddings/` — 33 embedding `.npy` files
 - `weights/MOSS-TTS-GGUF/lm_heads/` — 33 LM head `.npy` files
 - `weights/MOSS-TTS-GGUF/tokenizer/` — BPE tokenizer files
@@ -150,6 +150,18 @@ python scripts/batch_eval_llama_cpp.py \
     --result-dir results/llama_cpp_run \
     --suite seed-tts
 ```
+
+## Benchmark
+
+Quantization quality evaluated on [Seed-TTS-eval](https://github.com/BytedanceSpeech/seed-tts-eval) zero-shot benchmark. Baseline is the original HuggingFace model; GGUF variants use the llama.cpp backend with TensorRT audio tokenizer.
+
+| Quantization | EN WER (%) ↓ | EN SIM (%) ↑ | ZH CER (%) ↓ | ZH SIM (%) ↑ |
+|---|---:|---:|---:|---:|
+| Baseline (HuggingFace) | 1.79 | 71.46 | 1.32 | 77.05 |
+| Q8_0 | 3.21 | 68.61 | 1.56 | 76.03 |
+| Q6_K | 3.11 | 68.77 | 1.44 | 76.06 |
+| Q5_K_M | 2.95 | 68.55 | 1.50 | 75.96 |
+| Q4_K_M | 2.83 | 68.15 | 1.58 | 75.71 |
 
 ## Configuration
 

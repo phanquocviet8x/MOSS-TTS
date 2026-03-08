@@ -9,7 +9,7 @@
 
 # ── Model paths ──────────────────────────────────────────────────────────────
 
-backbone_gguf: weights/MOSS-TTS-GGUF/MOSS_TTS_backbone_q4km.gguf
+backbone_gguf: weights/MOSS-TTS-GGUF/MOSS_TTS_Q4_K_M.gguf
 embedding_dir: weights/MOSS-TTS-GGUF/embeddings
 lm_head_dir: weights/MOSS-TTS-GGUF/lm_heads
 tokenizer_dir: weights/MOSS-TTS-GGUF/tokenizer

@@ -49,7 +49,7 @@ huggingface-cli download OpenMOSS-Team/MOSS-TTS-GGUF --local-dir weights/MOSS-TT
 ```
 
 下载后的目录结构：
-- `weights/MOSS-TTS-GGUF/MOSS_TTS_backbone_q4km.gguf` — Q4_K_M 量化的 backbone
+- `weights/MOSS-TTS-GGUF/MOSS_TTS_Q4_K_M.gguf` — Q4_K_M 量化的 backbone
 - `weights/MOSS-TTS-GGUF/embeddings/` — 33 个 embedding `.npy` 文件
 - `weights/MOSS-TTS-GGUF/lm_heads/` — 33 个 LM head `.npy` 文件
 - `weights/MOSS-TTS-GGUF/tokenizer/` — BPE tokenizer 文件
@@ -154,6 +154,18 @@ python scripts/batch_eval_llama_cpp.py \
     --result-dir results/llama_cpp_run \
     --suite seed-tts
 ```
+
+## 量化评测
+
+在 [Seed-TTS-eval](https://github.com/BytedanceSpeech/seed-tts-eval) zero-shot 评测集上的量化质量对比。Baseline 为 HuggingFace 原始模型；GGUF 变体使用 llama.cpp 后端 + TensorRT 音频编解码器。
+
+| 量化方案 | EN WER (%) ↓ | EN SIM (%) ↑ | ZH CER (%) ↓ | ZH SIM (%) ↑ |
+|---|---:|---:|---:|---:|
+| Baseline (HuggingFace) | 1.79 | 71.46 | 1.32 | 77.05 |
+| Q8_0 | 3.21 | 68.61 | 1.56 | 76.03 |
+| Q6_K | 3.11 | 68.77 | 1.44 | 76.06 |
+| Q5_K_M | 2.95 | 68.55 | 1.50 | 75.96 |
+| Q4_K_M | 2.83 | 68.15 | 1.58 | 75.71 |
 
 ## 配置
 
