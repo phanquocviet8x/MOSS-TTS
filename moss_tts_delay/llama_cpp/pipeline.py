@@ -568,10 +568,12 @@ class LlamaCppPipeline:
         if self._low_memory:
             decoder = self._load_decoder_only()
             self._gpu_monitor.snapshot("decoder_loaded")
-            waveform = decoder.decode(audio_codes)
-            decoder.close()
-            del decoder
-            _gpu_gc()
+            try:
+                waveform = decoder.decode(audio_codes)
+            finally:
+                decoder.close()
+                del decoder
+                _gpu_gc()
             self._gpu_monitor.snapshot("decoder_unloaded")
         else:
             waveform = self.audio_tokenizer.decode(audio_codes)
@@ -609,8 +611,12 @@ class LlamaCppPipeline:
         )
         self._gpu_monitor.snapshot("backbone_loaded")
 
-        embedder = EmbeddingLookup(cfg.embedding_dir)
-        lm_heads = self._build_lm_heads(cfg)
+        try:
+            embedder = EmbeddingLookup(cfg.embedding_dir)
+            lm_heads = self._build_lm_heads(cfg)
+        except Exception:
+            backbone.close()
+            raise
         self._gpu_monitor.snapshot("llm_loaded")
 
         log.info("[low-memory] LLM loaded in %.2fs", time.time() - t0)
@@ -626,10 +632,12 @@ class LlamaCppPipeline:
             log.info("[low-memory] Loading encoder for reference encoding...")
             encoder = self._load_encoder_only()
             self._gpu_monitor.snapshot("encoder_loaded")
-            ref_codes = encoder.encode(wav)
-            encoder.close()
-            del encoder
-            _gpu_gc()
+            try:
+                ref_codes = encoder.encode(wav)
+            finally:
+                encoder.close()
+                del encoder
+                _gpu_gc()
             self._gpu_monitor.snapshot("encoder_unloaded")
             return ref_codes
 
@@ -638,8 +646,6 @@ class LlamaCppPipeline:
     def _load_reference_wav(self, reference) -> np.ndarray:
         """Load and normalize reference audio to a float32 waveform."""
         if isinstance(reference, np.ndarray):
-            if reference.ndim == 2 and reference.shape[1] == N_VQ:
-                return reference
             if reference.ndim == 1 or (reference.ndim == 2 and reference.shape[0] == 1):
                 wav = reference.ravel().astype(np.float32)
                 return loudness_normalize(wav)
