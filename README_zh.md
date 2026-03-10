@@ -56,6 +56,7 @@ MOSS‑TTS 家族是由 [MOSI.AI](https://mosi.cn/#hero) 与 [OpenMOSS 团队](h
   - [环境准备](#environment-setup)
   - [（可选）安装 FlashAttention 2](#optional-install-flashattention-2)
   - [基础用法](#moss-tts-basic-usage)
+  - [微调](#fine-tuning)
 - [llama.cpp 后端（无 PyTorch 推理）](#llamacpp-后端无-pytorch-推理)
 - [评测](#evaluation)
   - [MOSS-TTS 评测](#eval-moss-tts)
@@ -329,6 +330,16 @@ with torch.no_grad():
 
 各模型的完整使用方式请参考对应的 model card。
 
+<a id="fine-tuning"></a>
+### 微调
+
+微调教程按架构分别组织。
+
+当前已提供：
+
+- `MossTTSDelay` / `OpenMOSS-Team/MOSS-TTS`：见 [moss_tts_delay/finetuning/README_zh.md](moss_tts_delay/finetuning/README_zh.md)
+
+后续其余架构的微调教程也会分别补充到对应目录下。
 
 ## llama.cpp 后端（无 PyTorch 推理）
 

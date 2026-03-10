@@ -54,6 +54,7 @@ MOSS‑TTS Family is an open‑source **speech and sound generation model family
   - [Environment Setup](#environment-setup)
   - [(Optional) Install FlashAttention 2](#optional-install-flashattention-2)
   - [MOSS-TTS Basic Usage](#moss-tts-basic-usage)
+- [Fine-Tuning](#fine-tuning)
 - [llama.cpp Backend (Torch-Free Inference)](#llamacpp-backend-torch-free-inference)
 - [Evaluation](#evaluation)
   - [MOSS-TTS](#moss-tts-seed-tts-eval)
@@ -321,6 +322,16 @@ with torch.no_grad():
 
 For each model’s full usage, please refer to its corresponding model card.
 
+<a id="fine-tuning"></a>
+## Fine-Tuning
+
+Finetuning tutorials are organized by architecture.
+
+Currently available:
+
+- `MossTTSDelay` / `OpenMOSS-Team/MOSS-TTS`: [moss_tts_delay/finetuning/README.md](moss_tts_delay/finetuning/README.md)
+
+Additional architecture-specific finetuning tutorials will be added under their corresponding directories.
 
 ## llama.cpp Backend (Torch-Free Inference)
 
