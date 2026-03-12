@@ -32,7 +32,8 @@
 MOSS‑TTS Family is an open‑source **speech and sound generation model family** from [MOSI.AI](https://mosi.cn/#hero) and the [OpenMOSS team](https://www.open-moss.com/). It is designed for **high‑fidelity**, **high‑expressiveness**, and **complex real‑world scenarios**, covering stable long‑form speech, multi‑speaker dialogue, voice/character design, environmental sound effects, and real‑time streaming TTS.
 
 ## News
-* 2026.3.10: ⚡️ Significantly optimized the VRAM usage of llama.cpp inference pipeline. Now 8B model fits onto 8GB GPUs !
+* 2026.3.11: 📘 Added a tutorial on fine-tuning the MossTTSDelay architecture, suitable for MOSS-TTS(Delay), MOSS-TTSD, MOSS-VoiceGenerator, and MOSS-SoundEffect!
+* 2026.3.10: ⚡️ Significantly optimized the VRAM usage of llama.cpp inference pipeline. Now 8B model fits onto 8GB GPUs!
 * 2026.3.4: 🚀 Added **PyTorch-free inference support** — enabling lightweight on-device deployment via **llama.cpp + ONNX Runtime**. Quantized **GGUF weights** are released at [OpenMOSS-Team/MOSS-TTS-GGUF](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-GGUF), and the **ONNX audio tokenizer** is available at [OpenMOSS-Team/MOSS-Audio-Tokenizer-ONNX](https://huggingface.co/OpenMOSS-Team/MOSS-Audio-Tokenizer-ONNX). See the [llama.cpp backend](#llamacpp-backend-torch-free-inference) for details.
 * 2026.3.4: 🎉 We add MOSS-TTS skills in [ClawHub](https://clawhub.ai) of 🦞 OpenClaw: [feishu-voice-tts](https://clawhub.ai/helloeveryworlds/feishu-voice-tts) and [moss-tts-voice](https://clawhub.ai/luogao2333/moss-tts-voice).
 * 2026.2.10: 🎉🎉🎉 We have released [MOSS-TTS Family](https://huggingface.co/collections/OpenMOSS-Team/moss-tts). Check our [Blog](https://mosi.cn/#models) for more details! Our **Huggingface Space** is here: [MOSS-TTS](https://huggingface.co/spaces/OpenMOSS-Team/MOSS-TTS), [MOSS-TTSD-v1.0](https://huggingface.co/spaces/OpenMOSS-Team/MOSS-TTSD-v1.0), [MOSS-VoiceGenerator](https://huggingface.co/spaces/OpenMOSS-Team/MOSS-VoiceGenerator).
@@ -403,7 +404,7 @@ For full documentation, see [moss_tts_delay/llama_cpp/README.md](moss_tts_delay/
 
 ## Evaluation
 
-This section summarizes the **family‑level evaluation highlights** for MOSS‑TTS and MOSS‑VoiceGenerator. For full details, see each model’s model card.
+This section summarizes the **family‑level evaluation highlights** for MOSS‑TTS, MOSS-TTSD and MOSS‑VoiceGenerator. For full details, see each model’s model card.
 
 ### MOSS‑TTS
 MOSS‑TTS achieved state‑of‑the‑art results on the open‑source zero‑shot TTS benchmark `Seed‑TTS‑eval`, surpassing all open‑source models and rivaling leading closed‑source systems.
@@ -412,13 +413,13 @@ MOSS‑TTS achieved state‑of‑the‑art results on the open‑source zero‑s
 |---|---:|:---:|---:|---:|---:|---:|
 | DiTAR | 0.6B | ❌ | 1.69 | 73.5 | 1.02 | 75.3 |
 | FishAudio‑S1 | 4B | ❌ | 1.72 | 62.57 | 1.22 | 72.1 |
+| CosyVoice3 | 1.5B | ❌ | 2.22 | 72 | 1.12 | 78.1 |
 | Seed‑TTS |  | ❌ | 2.25 | 76.2 | 1.12 | 79.6 |
 | MiniMax‑Speech |  | ❌ | 1.65 | 69.2 | 0.83 | 78.3 |
 |  |  |  |  |  |  |  |
 | CosyVoice | 0.3B | ✅ | 4.29 | 60.9 | 3.63 | 72.3 |
 | CosyVoice2 | 0.5B | ✅ | 3.09 | 65.9 | 1.38 | 75.7 |
 | CosyVoice3 | 0.5B | ✅ | 2.02 | 71.8 | 1.16 | 78 |
-| CosyVoice3 | 1.5B | ✅ | 2.22 | 72 | 1.12 | 78.1 |
 | F5‑TTS | 0.3B | ✅ | 2 | 67 | 1.53 | 76 |
 | SparkTTS | 0.5B | ✅ | 3.14 | 57.3 | 1.54 | 66 |
 | FireRedTTS | 0.5B | ✅ | 3.82 | 46 | 1.51 | 63.5 |
@@ -508,6 +509,14 @@ We compare **MOSS Audio Tokenizer** with open-source audio tokenizers on the Lib
 <p align="center">
   <img src="./assets/evaluation_moss_audio_tokenizer.png" alt="LibriSpeech objective metrics for audio tokenizers" width="90%" />
 </p>
+
+
+## 📚 More Information
+###  🌟 Community Projects
+The MOSS-TTS community has been growing rapidly, and we’re delighted to showcase some outstanding projects and features built by community members:
+- **[ComfyUI-MOSS-TTS](https://github.com/richservo/comfyui-moss-tts)** A MOSS-TTS extension for ComfyUI.
+- **[MOSS-TTS-OpenAI](https://github.com/dasilva333/moss-tts-openai)** An OpenAI-compatible TTS API for MOSS-TTS.
+
 
 ## LICENSE
 
