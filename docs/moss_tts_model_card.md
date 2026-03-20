@@ -399,29 +399,32 @@ print(model_input_text)
 ## 3. Evaluation
 MOSS-TTS achieved state-of-the-art results on the open-source zero-shot TTS benchmark Seed-TTS-eval, not only surpassing all open-source models but also rivaling the most powerful closed-source models.
 
-| Model | Params | Open-source | EN WER (%) ↓ | EN SIM (%) ↑ | ZH CER (%) ↓ | ZH SIM (%) ↑ |
+| Model | Params | Open‑source | EN WER (%) ↓ | EN SIM (%) ↑ | ZH CER (%) ↓ | ZH SIM (%) ↑ |
 |---|---:|:---:|---:|---:|---:|---:|
 | DiTAR | 0.6B | ❌ | 1.69 | 73.5 | 1.02 | 75.3 |
-| FishAudio-S1 | 4B | ❌ | 1.72 | 62.57 | 1.22 | 72.1 |
-| Seed-TTS |  | ❌ | 2.25 | 76.2 | 1.12 | 79.6 |
-| MiniMax-Speech |  | ❌ | 1.65 | 69.2 | 0.83 | 78.3 |
+| FishAudio‑S1 | 4B | ❌ | 1.72 | 62.57 | 1.22 | 72.1 |
+| CosyVoice3 | 1.5B | ❌ | 2.22 | 72 | 1.12 | 78.1 |
+| Seed‑TTS |  | ❌ | 2.25 | 76.2 | 1.12 | 79.6 |
+| MiniMax‑Speech |  | ❌ | 1.65 | 69.2 | 0.83 | 78.3 |
 |  |  |  |  |  |  |  |
 | CosyVoice | 0.3B | ✅ | 4.29 | 60.9 | 3.63 | 72.3 |
 | CosyVoice2 | 0.5B | ✅ | 3.09 | 65.9 | 1.38 | 75.7 |
 | CosyVoice3 | 0.5B | ✅ | 2.02 | 71.8 | 1.16 | 78 |
-| CosyVoice3 | 1.5B | ✅ | 2.22 | 72 | 1.12 | 78.1 |
-| F5-TTS | 0.3B | ✅ | 2 | 67 | 1.53 | 76 |
+| F5‑TTS | 0.3B | ✅ | 2 | 67 | 1.53 | 76 |
 | SparkTTS | 0.5B | ✅ | 3.14 | 57.3 | 1.54 | 66 |
 | FireRedTTS | 0.5B | ✅ | 3.82 | 46 | 1.51 | 63.5 |
-| FireRedTTS-2 | 1.5B | ✅ | 1.95 | 66.5 | 1.14 | 73.6 |
-| Qwen2.5-Omni | 7B | ✅ | 2.72 | 63.2 | 1.7 | 75.2 |
-| FishAudio-S1-mini | 0.5B | ✅ | 1.94 | 55 | 1.18 | 68.5 |
+| FireRedTTS‑2 | 1.5B | ✅ | 1.95 | 66.5 | 1.14 | 73.6 |
+| Qwen2.5‑Omni | 7B | ✅ | 2.72 | 63.2 | 1.7 | 75.2 |
+| FishAudio‑S1‑mini | 0.5B | ✅ | 1.94 | 55 | 1.18 | 68.5 |
 | IndexTTS2 | 1.5B | ✅ | 2.23 | 70.6 | 1.03 | 76.5 |
 | VibeVoice | 1.5B | ✅ | 3.04 | 68.9 | 1.16 | 74.4 |
-| HiggsAudio-v2 | 3B | ✅ | 2.44 | 67.7 | 1.5 | 74 |
-| VoxCPM | 0.5B | ✅ | 1.85 | 72.9 | **0.93** | 77.2 |
-| Qwen3-TTS | 0.6B | ✅ | 1.68 | 70.39 | 1.23 | 76.4 |
-| Qwen3-TTS | 1.7B | ✅ | **1.5** | 71.45 | 1.33 | 76.72 |
+| HiggsAudio‑v2 | 3B | ✅ | 2.44 | 67.7 | 1.5 | 74 |
+| GLM-TTS | 1.5B | ✅ | 2.23 | 67.2 | 1.03 | 76.1 |
+| GLM-TTS-RL | 1.5B | ✅ | 1.91 | 68.1 | **0.89** | 76.4 |
+| VoxCPM | 0.5B | ✅ | 1.85 | 72.9 | 0.93 | 77.2 |
+| Qwen3‑TTS | 0.6B | ✅ | 1.68 | 70.39 | 1.23 | 76.4 |
+| Qwen3‑TTS | 1.7B | ✅ | **1.5** | 71.45 | 1.33 | 76.72 |
 |  |  |  |  |  |  |  |
-| MossTTSDelay | 8B | ✅ | 1.79 | 71.46 | 1.32 | 77.05 |
-| MossTTSLocal | 1.7B | ✅ | 1.85 | **73.42** | 1.2 | **78.82** |
+| **MossTTSDelay** | **8B** | ✅ | 1.84 | 70.86 | 1.37 | 76.98 |
+| **MossTTSLocal** | **1.7B** | ✅ | 1.93 | **73.28** | 1.44 | **79.62** |
+
