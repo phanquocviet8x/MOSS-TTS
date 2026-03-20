@@ -16,7 +16,7 @@
   <a href="https://huggingface.co/collections/OpenMOSS-Team/moss-tts"><img src="https://img.shields.io/badge/Huggingface-Models-orange?logo=huggingface&amp"></a>
   <a href="https://modelscope.cn/collections/OpenMOSS-Team/MOSS-TTS"><img src="https://img.shields.io/badge/ModelScope-Models-lightgrey?logo=modelscope&amp"></a>
   <a href="https://mosi.cn/#models"><img src="https://img.shields.io/badge/Blog-View-blue?logo=internet-explorer&amp"></a>
-  <a href="https://github.com/OpenMOSS/MOSS-TTS"><img src="https://img.shields.io/badge/Arxiv-Coming%20soon-red?logo=arxiv&amp"></a>
+  <a href="https://arxiv.org/pdf/2603.18090"><img src="https://img.shields.io/badge/Arxiv-2603.18090-red?logo=Arxiv&amp"></a>
 
   <a href="https://studio.mosi.cn"><img src="https://img.shields.io/badge/AIStudio-Try-green?logo=internet-explorer&amp"></a>
   <a href="https://studio.mosi.cn/docs/moss-tts"><img src="https://img.shields.io/badge/API-Docs-00A3FF?logo=fastapi&amp"></a>
@@ -32,6 +32,7 @@
 MOSS‑TTS Family is an open‑source **speech and sound generation model family** from [MOSI.AI](https://mosi.cn/#hero) and the [OpenMOSS team](https://www.open-moss.com/). It is designed for **high‑fidelity**, **high‑expressiveness**, and **complex real‑world scenarios**, covering stable long‑form speech, multi‑speaker dialogue, voice/character design, environmental sound effects, and real‑time streaming TTS.
 
 ## News
+* 2026.3.20: 📄 Our [technical report](https://arxiv.org/pdf/2603.18090) is now available on arXiv!
 * 2026.3.18: 🚀 Added a first-class MOSS-TTS `llama.cpp` implementation in the companion repository [`OpenMOSS/llama.cpp`](https://github.com/OpenMOSS/llama.cpp/tree/moss-tts-firstclass), including end-to-end docs and a runnable pipeline for GGUF backbone inference plus ONNX audio codec decoding. See the [first-class e2e guide](https://github.com/OpenMOSS/llama.cpp/blob/moss-tts-firstclass/docs/moss-tts-firstclass-e2e.md).
 * 2026.3.16: 📘 Added a tutorial on fine-tuning the MossTTSLocal architecture, suitable for MOSS-TTS-Local-Transformer!
 * 2026.3.12: 🚀 Added SGLang backend support for the `MossTTSDelay` architecture, enabling efficient inference for MOSS-TTS (Delay) and MOSS-SoundEffect, with around **3× faster** generation throughput!
@@ -631,6 +632,15 @@ Models in MOSS-TTS Family are licensed under the Apache License 2.0.
 ## Citation
 
 ```bibtex
+@misc{gong2026mossttstechnicalreport,
+      title={MOSS-TTS Technical Report}, 
+      author={Yitian Gong and Botian Jiang and Yiwei Zhao and Yucheng Yuan and Kuangwei Chen and Yaozhou Jiang and Cheng Chang and Dong Hong and Mingshu Chen and Ruixiao Li and Yiyang Zhang and Yang Gao and Hanfu Chen and Ke Chen and Songlin Wang and Xiaogui Yang and Yuqian Zhang and Kexin Huang and ZhengYuan Lin and Kang Yu and Ziqi Chen and Jin Wang and Zhaoye Fei and Qinyuan Cheng and Shimin Li and Xipeng Qiu},
+      year={2026},
+      eprint={2603.18090},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD},
+      url={https://arxiv.org/abs/2603.18090}, 
+}
 ```
 
 ## Star History

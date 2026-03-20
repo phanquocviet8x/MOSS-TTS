@@ -16,7 +16,7 @@
   <a href="https://huggingface.co/collections/OpenMOSS-Team/moss-tts"><img src="https://img.shields.io/badge/Huggingface-Models-orange?logo=huggingface&amp"></a>
   <a href="https://modelscope.cn/collections/OpenMOSS-Team/MOSS-TTS"><img src="https://img.shields.io/badge/ModelScope-Models-lightgrey?logo=modelscope&amp"></a>
   <a href="https://mosi.cn/#models"><img src="https://img.shields.io/badge/Blog-View-blue?logo=internet-explorer&amp"></a>
-  <a href="https://github.com/OpenMOSS/MOSS-TTS"><img src="https://img.shields.io/badge/Arxiv-Coming%20soon-red?logo=arxiv&amp"></a>
+  <a href="https://arxiv.org/pdf/2603.18090"><img src="https://img.shields.io/badge/Arxiv-2603.18090-red?logo=Arxiv&amp"></a>
 
   <a href="https://studio.mosi.cn"><img src="https://img.shields.io/badge/AIStudio-Try-green?logo=internet-explorer&amp"></a>
   <a href="https://studio.mosi.cn/docs/moss-tts"><img src="https://img.shields.io/badge/API-Docs-00A3FF?logo=fastapi&amp"></a>
@@ -34,6 +34,7 @@ MOSS‑TTS 家族是由 [MOSI.AI](https://mosi.cn/#hero) 与 [OpenMOSS 团队](h
 
 <a id="news"></a>
 ## 新闻
+* 2026.3.20: 📄 我们的[技术报告](https://arxiv.org/pdf/2603.18090)现已在arXiv上发布！
 * 2026.3.18：🚀 在配套仓库 [`OpenMOSS/llama.cpp`](https://github.com/OpenMOSS/llama.cpp/tree/moss-tts-firstclass) 中新增了 first-class MOSS-TTS `llama.cpp` 实现，提供 GGUF backbone 推理与 ONNX 音频编解码器解码的端到端可运行链路。可从 [first-class e2e 指南](https://github.com/OpenMOSS/llama.cpp/blob/moss-tts-firstclass/docs/moss-tts-firstclass-e2e_zh.md) 开始。
 * 2026.3.16：📘 新增 MossTTSLocal 架构微调教程，适用于 MOSS-TTS-Local-Transformer！
 * 2026.3.12：🚀 新增面向 `MossTTSDelay` 架构的 SGLang 后端支持，可用于 MOSS-TTS（Delay）和 MOSS-SoundEffect 的高效推理，生成吞吐可提升约 **3 倍**！
@@ -643,6 +644,15 @@ MOSS-TTS 家族中的模型使用 Apache License 2.0 许可证。
 ## 引用
 
 ```bibtex
+@misc{gong2026mossttstechnicalreport,
+      title={MOSS-TTS Technical Report}, 
+      author={Yitian Gong and Botian Jiang and Yiwei Zhao and Yucheng Yuan and Kuangwei Chen and Yaozhou Jiang and Cheng Chang and Dong Hong and Mingshu Chen and Ruixiao Li and Yiyang Zhang and Yang Gao and Hanfu Chen and Ke Chen and Songlin Wang and Xiaogui Yang and Yuqian Zhang and Kexin Huang and ZhengYuan Lin and Kang Yu and Ziqi Chen and Jin Wang and Zhaoye Fei and Qinyuan Cheng and Shimin Li and Xipeng Qiu},
+      year={2026},
+      eprint={2603.18090},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD},
+      url={https://arxiv.org/abs/2603.18090}, 
+}
 ```
 ## 星标历史数据
 
