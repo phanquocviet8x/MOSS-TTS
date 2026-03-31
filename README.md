@@ -652,6 +652,26 @@ Models in MOSS-TTS Family are licensed under the Apache License 2.0.
       primaryClass={cs.SD},
       url={https://arxiv.org/abs/2603.18090}, 
 }
+
+@misc{zhang2026mossttsdtextspokendialogue,
+      title={MOSS-TTSD: Text to Spoken Dialogue Generation}, 
+      author={Yuqian Zhang and Donghua Yu and Zhengyuan Lin and Botian Jiang and Mingshu Chen and Yaozhou Jiang and Yiwei Zhao and Yiyang Zhang and Yucheng Yuan and Hanfu Chen and Kexin Huang and Jun Zhan and Cheng Chang and Zhaoye Fei and Shimin Li and Xiaogui Yang and Qinyuan Cheng and Xipeng Qiu},
+      year={2026},
+      eprint={2603.19739},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD},
+      url={https://arxiv.org/abs/2603.19739}, 
+}
+
+@misc{huang2026mossvoicegeneratorcreaterealisticvoices,
+      title={MOSS-VoiceGenerator: Create Realistic Voices with Natural Language Descriptions}, 
+      author={Kexin Huang and Liwei Fan and Botian Jiang and Yaozhou Jiang and Qian Tu and Jie Zhu and Yuqian Zhang and Yiwei Zhao and Chenchen Yang and Zhaoye Fei and Shimin Li and Xiaogui Yang and Qinyuan Cheng and Xipeng Qiu},
+      year={2026},
+      eprint={2603.28086},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD},
+      url={https://arxiv.org/abs/2603.28086}, 
+}
 ```
 
 ## Star History
