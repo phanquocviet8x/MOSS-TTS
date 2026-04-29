@@ -32,8 +32,19 @@
 
 MOSS‑TTS 家族是由 [MOSI.AI](https://mosi.cn/#hero) 与 [OpenMOSS 团队](https://www.open-moss.com/) 推出的开源 **语音与声音生成模型家族**。该系列面向 **高保真**、**高表现力** 与 **复杂真实场景** 设计，覆盖稳定长文本语音、多说话人对话、音色/角色设计、环境音效以及实时流式 TTS 等能力。
 
+## MOSS-TTS 2.0 需求收集
+
+MOSS-TTS 2.0 即将到来。为了更好地优化模型能力和产品体验，我们想收集大家在使用 TTS 过程中的反馈与建议。希望大家能够花 2-3 分钟填写[需求收集表](https://acnc6zeentra.feishu.cn/share/base/form/shrcnyAe1LwqKWjCSuW4wiZ2Hef)，欢迎各种意义上的需求说明，包括许愿！
+
+<p align="center">
+  <a href="https://acnc6zeentra.feishu.cn/share/base/form/shrcnyAe1LwqKWjCSuW4wiZ2Hef">
+    <img src="./assets/moss_tts_2_requirements_gathering.jpg" width="360" alt="MOSS-TTS 2.0 需求收集二维码" />
+  </a>
+</p>
+
 <a id="news"></a>
 ## 新闻
+* 2026.4.29：📝 MOSS-TTS 2.0 即将到来！我们正在通过[需求收集表](https://acnc6zeentra.feishu.cn/share/base/form/shrcnyAe1LwqKWjCSuW4wiZ2Hef)收集大家在使用 TTS 过程中的反馈、建议与功能需求。
 * 2026.4.13：🚀 ~100M 参数量的 MOSS-TTS-Nano 已发布！支持多语种 voice clone、48 kHz 立体声输入输出，并且仅需 4 核 CPU 即可实现流式输出。详情可查看 [GitHub 仓库](https://github.com/OpenMOSS/MOSS-TTS-Nano) 和我们的 [blog](https://openmoss.github.io/MOSS-TTS-Nano-Demo/)。
 * 2026.3.31: 📄 [MOSS-TTSD](https://arxiv.org/pdf/2603.19739) 和 [MOSS-VoiceGenerator](https://arxiv.org/pdf/2603.28086) 的技术报告现已在arXiv上发布！
 * 2026.3.26: 📘 新增 MOSS-TTS-Realtime 微调教程！
