@@ -110,9 +110,9 @@ OUTPUT_PATH=./output/my_finetune \
 (caption text in English or Chinese).
 
 ```jsonl
-{"audio": "wavs/dog_bark_01.wav", "prompt": "A dog barking loudly in a park."}
-{"audio": "wavs/rain.wav", "prompt": "Heavy rain on a tin roof."}
-{"audio": "wavs/footsteps.wav", "prompt": "脚步声在木地板上"}
+{"audio": "wavs/birdsong.wav", "prompt": "清晨小鸟叽叽喳喳地叫着，叫声清脆悦耳。"}
+{"audio": "wavs/brushing_teeth.wav", "prompt": "刷牙的声音，牙刷毛摩擦牙齿的那种沙沙声。"}
+{"audio": "wavs/pooring_water.wav", "prompt": "Pouring water into a glass, clear liquid flowing sound, pitch rising as the glass fills up, refreshing."}
 ```
 
 ## Export a fine-tuned checkpoint
