@@ -669,7 +669,10 @@ def main():
     )
 
     demo = build_demo(args)
+    vscode_path = os.getenv("VSCODE_PROXY_URI", "/")
+    root_path = vscode_path.replace(r"{{port}}", "7860")
     demo.queue(max_size=16, default_concurrency_limit=1).launch(
+        root_path=root_path,
         server_name=args.host,
         server_port=args.port,
         share=args.share,
