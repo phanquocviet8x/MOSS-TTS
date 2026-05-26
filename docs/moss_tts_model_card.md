@@ -77,7 +77,23 @@ For full details, see:
 | **MossTTSDelay-8B v1.5 / 1.0** | 1.7 | 0.8 | 25 | 1.0 |
 | **MossTTSLocal-1.7B** | 1.0 | 0.95 | 50 | 1.1 |
 
+### 1.5 Supported Languages
 
+MOSS-TTS-v1.5 currently supports **31 languages**. It keeps the 20 languages supported by MOSS-TTS 1.0 and extends multilingual continued training to Cantonese, Dutch, Finnish, Hindi, Macedonian, Malay, Romanian, Swahili, Tagalog, Thai, and Vietnamese.
+
+| Language | Code | Flag | Language | Code | Flag | Language | Code | Flag |
+|---|---|---|---|---|---|---|---|---|
+| Chinese | zh | 🇨🇳 | Cantonese | yue | 🇭🇰 | English | en | 🇺🇸 |
+| Arabic | ar | 🇸🇦 | Czech | cs | 🇨🇿 | Danish | da | 🇩🇰 |
+| Dutch | nl | 🇳🇱 | Finnish | fi | 🇫🇮 | French | fr | 🇫🇷 |
+| German | de | 🇩🇪 | Greek | el | 🇬🇷 | Hebrew | he | 🇮🇱 |
+| Hindi | hi | 🇮🇳 | Hungarian | hu | 🇭🇺 | Italian | it | 🇮🇹 |
+| Japanese | ja | 🇯🇵 | Korean | ko | 🇰🇷 | Macedonian | mk | 🇲🇰 |
+| Malay | ms | 🇲🇾 | Persian (Farsi) | fa | 🇮🇷 | Polish | pl | 🇵🇱 |
+| Portuguese | pt | 🇵🇹 | Romanian | ro | 🇷🇴 | Russian | ru | 🇷🇺 |
+| Spanish | es | 🇪🇸 | Swahili | sw | 🇹🇿 | Swedish | sv | 🇸🇪 |
+| Tagalog | tl | 🇵🇭 | Thai | th | 🇹🇭 | Turkish | tr | 🇹🇷 |
+| Vietnamese | vi | 🇻🇳 | | | | | | |
 
 
 ## 2. Quick Start
