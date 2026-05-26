@@ -10,7 +10,6 @@
 
 
 
-
 <div align="center">
   <a href="https://clawhub.ai/luogao2333/moss-tts-voice"><img src="https://img.shields.io/badge/🦞_OpenClaw-Skills-8A2BE2" alt="OpenClaw"></a>
   <a href="https://huggingface.co/collections/OpenMOSS-Team/moss-tts"><img src="https://img.shields.io/badge/Huggingface-Models-orange?logo=huggingface&amp"></a>
@@ -21,7 +20,7 @@
   <a href="https://studio.mosi.cn"><img src="https://img.shields.io/badge/AIStudio-Try-green?logo=internet-explorer&amp"></a>
   <a href="https://studio.mosi.cn/docs/moss-tts"><img src="https://img.shields.io/badge/API-Docs-00A3FF?logo=fastapi&amp"></a>
   <a href="https://x.com/Open_MOSS"><img src="https://img.shields.io/badge/Twitter-Follow-black?logo=x&amp"></a>
-  <a href="https://discord.gg/Xf3aXddCjc"><img src="https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&amp"></a>
+  <a href="https://discord.gg/fvm5TaWjU3"><img src="https://img.shields.io/badge/Discord-Join-5865F2?logo=discord&amp"></a>
   <a href="./assets/wechat.jpg"><img src="https://img.shields.io/badge/WeChat-Join-07C160?logo=wechat&amp;logoColor=white" alt="WeChat"></a>
 </div>
 
@@ -140,7 +139,7 @@ We train **MossTTSDelay** and **MossTTSLocal** as complementary baselines under 
 
 | Model | Architecture | Size | Model Card | Hugging Face | ModelScope |
 |---|---|---:|---|---|---|
-| **MOSS-TTS-v1.5** | `MossTTSDelay` | 8B | [![Model Card](https://img.shields.io/badge/Model%20Card-View-blue?logo=markdown)](docs/moss_tts_model_card.md) | [![Hugging Face](https://img.shields.io/badge/Huggingface-Model-orange?logo=huggingface)](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5) | — |
+| **MOSS-TTS-v1.5** | `MossTTSDelay` | 8B | [![Model Card](https://img.shields.io/badge/Model%20Card-View-blue?logo=markdown)](docs/moss_tts_model_card.md) | [![Hugging Face](https://img.shields.io/badge/Huggingface-Model-orange?logo=huggingface)](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-v1.5) | [![ModelScope](https://img.shields.io/badge/ModelScope-Model-lightgrey?logo=modelscope)](https://modelscope.cn/models/openmoss/MOSS-TTS-v1.5) |
 | **MOSS-TTS 1.0** | `MossTTSDelay` | 8B | [![Model Card](https://img.shields.io/badge/Model%20Card-View-blue?logo=markdown)](docs/moss_tts_model_card.md) | [![Hugging Face](https://img.shields.io/badge/Huggingface-Model-orange?logo=huggingface)](https://huggingface.co/OpenMOSS-Team/MOSS-TTS) | [![ModelScope](https://img.shields.io/badge/ModelScope-Model-lightgrey?logo=modelscope)](https://modelscope.cn/models/openmoss/MOSS-TTS) |
 | **MOSS-TTS-Local-Transformer** | `MossTTSLocal` | 1.7B | [![Model Card](https://img.shields.io/badge/Model%20Card-View-blue?logo=markdown)](docs/moss_tts_model_card.md) | [![Hugging Face](https://img.shields.io/badge/Huggingface-Model-orange?logo=huggingface)](https://huggingface.co/OpenMOSS-Team/MOSS-TTS-Local-Transformer) | [![ModelScope](https://img.shields.io/badge/ModelScope-Model-lightgrey?logo=modelscope)](https://modelscope.cn/models/openmoss/MOSS-TTS-Local-Transformer) |
 | **MOSS‑TTSD‑V1.0** | `MossTTSDelay` | 8B | [![Model Card](https://img.shields.io/badge/Model%20Card-View-blue?logo=markdown)](docs/moss_ttsd_model_card.md) | [![Hugging Face](https://img.shields.io/badge/Huggingface-Model-orange?logo=huggingface)](https://huggingface.co/OpenMOSS-Team/MOSS-TTSD-v1.0) | [![ModelScope](https://img.shields.io/badge/ModelScope-Model-lightgrey?logo=modelscope)](https://modelscope.cn/models/openmoss/MOSS-TTSD-v1.0) |
@@ -263,12 +262,12 @@ Notes:
 
 If you prefer Gradio demos, we provide 4 scripts for the main models:
 
-| Model | Script | Run |
-|---|---|---|
+| Model | Script |
+|---|---|
 | MOSS-TTS | [clis/moss_tts_app.py](clis/moss_tts_app.py) |
-| MOSS-TTSD | [clis/moss_ttsd_app.py](clis/moss_ttsd_app.py) | 
+| MOSS-TTSD | [clis/moss_ttsd_app.py](clis/moss_ttsd_app.py) |
 | MOSS-VoiceGenerator | [clis/moss_voice_generator_app.py](clis/moss_voice_generator_app.py) |
-| MOSS-SoundEffect | [clis/moss_sound_effect_app.py](clis/moss_sound_effect_app.py) | 
+| MOSS-SoundEffect | [clis/moss_sound_effect_app.py](clis/moss_sound_effect_app.py) |
 
 For the MOSS-TTS-Realtime Gradio demo, please refer to [MOSS-TTS-Realtime Model Card](docs/moss_tts_realtime_model_card.md)
 
@@ -281,7 +280,7 @@ MOSS-TTS provides a convenient `generate` interface for rapid usage. The example
 4. Explicit pause control with `[pause X.Ys]`
 
 ```python
-fArom pathlib import Path
+from pathlib import Path
 import importlib.util
 import torch
 import torchaudio
@@ -722,7 +721,7 @@ We compare **MOSS Audio Tokenizer** with open-source audio tokenizers on the Lib
 
 <a id="community-projects"></a>
 
-###  🌟 Community Projects
+### 🌟 Community Projects
 The MOSS-TTS community has been growing rapidly, and we’re delighted to showcase some outstanding projects and features built by community members:
 - **[ComfyUI-MOSS-TTS](https://github.com/richservo/comfyui-moss-tts)** A MOSS-TTS extension for ComfyUI.
 - **[MOSS-TTS-OpenAI](https://github.com/dasilva333/moss-tts-openai)** An OpenAI-compatible TTS API for MOSS-TTS.
