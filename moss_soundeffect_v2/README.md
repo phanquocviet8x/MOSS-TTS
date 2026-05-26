@@ -74,22 +74,22 @@ audio = pipe(
 pipe.save_audio(audio, "out.wav")
 ```
 
-Command-line: `bash examples/infer_from_pipeline.sh`
+Command-line: `bash infer_from_pipeline.sh`
 
-> The bundled `examples/*.sh` scripts accept either a HF hub repo id or a
+> The bundled shell scripts accept either a HF hub repo id or a
 > local directory; weights are auto-downloaded into the HuggingFace cache
 > on first use.
 
 > The underlying DiT is wrapped with `torch.compile` + Triton CUDA Graph for
 > acceleration. The first call may take a few minutes to compile. If you hit
 > `TorchDynamo` / Triton compile errors, set `TORCHDYNAMO_DISABLE=1` before
-> launching Python — the bundled `examples/*.sh` scripts already do this.
+> launching Python — the bundled shell scripts already do this.
 
 ## Gradio demo
 
 ```bash
 SOUNDEFFECT_MODEL_DIR=OpenMOSS-Team/MOSS-SoundEffect-v2.0 \
-  bash examples/gradio_app.sh
+  python ../clis/moss_sound_effect_app.py
 ```
 
 ## Fine-tuning
@@ -100,7 +100,7 @@ Full-parameter DiT fine-tune from an existing HF directory:
 HF_MODEL_DIR=OpenMOSS-Team/MOSS-SoundEffect-v2.0 \
 METADATA_PATH=/path/to/captions.jsonl \
 OUTPUT_PATH=./output/my_finetune \
-  bash examples/finetune.sh
+  bash finetuning/finetuning.sh
 ```
 
 ### Metadata format
@@ -126,7 +126,7 @@ training:
 CKPT_PATH=/path/to/output/finetune/epoch-0.safetensors \
 SOURCE_HF_DIR=OpenMOSS-Team/MOSS-SoundEffect-v2.0 \
 OUTPUT_DIR=./output/finetune/hf_format_epoch0 \
-  bash examples/export_to_hf.sh
+  bash finetuning/export_to_hf.sh
 ```
 
 `SOURCE_HF_DIR` is the HF directory (or hub repo id) you fine-tuned from.
@@ -134,5 +134,4 @@ Its frozen sub-modules (VAE / text encoder / tokenizer / scheduler) are
 copied unchanged into the output, so you do **not** need to re-download
 Qwen3 or the DAC VAE. The resulting directory can be loaded by
 `MossSoundEffectPipeline.from_pretrained(OUTPUT_DIR)`.
-
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-cd "$(dirname "$0")/.."
+cd "$(dirname "$0")"
 
 MODEL_DIR=${MODEL_DIR:-"${SOUNDEFFECT_MODEL_DIR:-/path/to/SoundEffect-v2-hf}"}
 PROMPT=${PROMPT:-"The crisp, rhythmic click-clack of fast typing on a mechanical keyboard."}
@@ -12,12 +12,12 @@ SIGMA_SHIFT=${SIGMA_SHIFT:-5.0}
 SEED=${SEED:-0}
 DEVICE=${DEVICE:-"cuda"}
 TORCH_DTYPE=${TORCH_DTYPE:-"bfloat16"}
-OUTPUT=${OUTPUT:-"examples/output/output_pipeline.wav"}
+OUTPUT=${OUTPUT:-"output/output_pipeline.wav"}
 
 mkdir -p "$(dirname "$OUTPUT")"
 
 TORCHDYNAMO_DISABLE=${TORCHDYNAMO_DISABLE:-1} \
-  python examples/infer_from_pipeline.py \
+  python infer_from_pipeline.py \
     --model_dir "$MODEL_DIR" \
     --prompt "$PROMPT" \
     --seconds "$SECONDS_" \

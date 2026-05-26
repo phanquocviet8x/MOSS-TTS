@@ -9,7 +9,7 @@ import torch
 import torchaudio
 
 _HERE = Path(__file__).resolve().parent
-_PROJECT_DIR = _HERE.parent.parent
+_PROJECT_DIR = _HERE.parent
 sys.path.insert(0, str(_PROJECT_DIR))
 
 from moss_soundeffect_v2 import MossSoundEffectPipeline

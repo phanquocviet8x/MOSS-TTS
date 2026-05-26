@@ -6,7 +6,7 @@ from pathlib import Path
 
 _HERE = Path(__file__).resolve().parent
 _PKG_DIR = _HERE.parent
-_PROJECT_DIR = _PKG_DIR.parent
+_PROJECT_DIR = _PKG_DIR.parent.parent
 sys.path.insert(0, str(_PROJECT_DIR))
 
 from moss_soundeffect_v2.hf_export import export_finetuned_to_hf

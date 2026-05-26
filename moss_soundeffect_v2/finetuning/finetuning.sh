@@ -36,7 +36,7 @@ fi
 
 accelerate launch \
   --mixed_precision bf16 \
-  examples/finetune.py \
+  finetuning/finetuning.py \
   --hf_model_dir "$HF_MODEL_DIR" \
   --dataset_base_path / \
   --dataset_metadata_path "$METADATA_PATH" \
@@ -62,4 +62,4 @@ accelerate launch \
   --output_path "$OUTPUT_PATH" \
   --log_dir "$OUTPUT_PATH" \
   "${CACHE_ARGS[@]}" \
-  2>&1 | tee "$OUTPUT_PATH/finetune.log"
+  2>&1 | tee "$OUTPUT_PATH/finetuning.log"
