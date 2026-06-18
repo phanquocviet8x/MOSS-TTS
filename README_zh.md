@@ -402,7 +402,7 @@ model = AutoModel.from_pretrained(
     pretrained_model_name_or_path,
     trust_remote_code=True,
     attn_implementation=attn_implementation,
-    torch_dtype=dtype,
+    dtype=dtype,
 ).to(device)
 model.eval()
 
@@ -428,7 +428,13 @@ with torch.no_grad():
             audio = message.audio_codes_list[0]
             out_path = save_dir / f"sample{sample_idx}.wav"
             sample_idx += 1
-            torchaudio.save(out_path, audio.unsqueeze(0), processor.model_config.sampling_rate)
+            if audio.ndim == 1:
+                audio = audio.unsqueeze(0)
+            torchaudio.save(
+                str(out_path),
+                audio.detach().cpu().to(torch.float32),
+                processor.model_config.sampling_rate,
+            )
 
 ```
 
